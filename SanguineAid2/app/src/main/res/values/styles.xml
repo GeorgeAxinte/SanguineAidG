@@ -1,0 +1,11 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#D80026</item>
+        <item name="colorPrimaryVariant">#B0001B</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#D80026</item>
+        <item name="colorSecondaryVariant">#B0001B</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+    </style>
+</resources>
