@@ -16,9 +16,8 @@ class User(Base):
     date_of_birth = Column(Date)
     city = Column(String)
     address = Column(String)
-    hasdonatedbloodbefore = Column(Boolean)  # Modificat pentru a se potrivi cu Android
+    hasdonatedbloodbefore = Column(Boolean)
 
-# backend/database.py
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Base
