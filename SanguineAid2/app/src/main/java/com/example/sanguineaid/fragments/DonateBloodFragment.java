@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sanguineaid.R;
+import com.example.sanguineaid.model.AppointmentViewModel;
 
 import android.os.Bundle;
 import android.widget.CheckBox;
@@ -20,8 +21,10 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,12 +38,15 @@ public class DonateBloodFragment extends Fragment {
     private RadioGroup radioGroupArm;
     private CheckBox checkboxKnowsBloodType;
     private ListView listAppointments;
+    private AppointmentViewModel appointmentViewModel;
 
-    private List<String> cityList = Arrays.asList("Bucharest", "Cluj-Napoca", "Timișoara", "Iași", "Constanța",
-            "Craiova", "Brașov", "Galați", "Ploiești", "Oradea",
-            "Brăila", "Arad", "Pitești", "Sibiu", "Bacău",
-            "Târgu Mureș", "Baia Mare", "Buzău", "Botoșani", "Satu Mare",
-            "Râmnicu Vâlcea", "Drobeta-Turnu Severin", "Suceava", "Piatra Neamț", "Târgu Jiu");
+
+    private List<String> cityList = Arrays.asList(
+            "Arad", "Baia Mare", "Bacău", "Botoșani", "Brașov", "Brăila", "Bucharest",
+            "Cluj-Napoca", "Constanța", "Craiova", "Drobeta-Turnu Severin", "Galați", "Iași",
+            "Oradea", "Piatra Neamț", "Pitești", "Ploiești", "Râmnicu Vâlcea", "Satu Mare",
+            "Sibiu", "Suceava", "Târgu Jiu", "Târgu Mureș", "Timișoara"
+    );
     private List<String> bloodTypes = Arrays.asList("O", "A", "B", "AB");
     private List<String> appointmentList = new ArrayList<>();
     private ArrayAdapter<String> appointmentAdapter;
@@ -50,7 +56,7 @@ public class DonateBloodFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.donate_blood_fragment, container, false);
-
+        appointmentViewModel = new ViewModelProvider(requireActivity()).get(AppointmentViewModel.class);
         spinnerCities = view.findViewById(R.id.spinner_cities);
         spinnerBloodType = view.findViewById(R.id.spinner_blood_type);
         btnPickDate = view.findViewById(R.id.btn_pick_date);
@@ -90,17 +96,43 @@ public class DonateBloodFragment extends Fragment {
     }
 
     private void saveAppointment() {
+        Calendar calendar = Calendar.getInstance();
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH);
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String[] selectedDateParts = selectedDate.split("/");
+        int selectedDay = Integer.parseInt(selectedDateParts[0]);
+        int selectedMonth = Integer.parseInt(selectedDateParts[1]) - 1;
+        int selectedYear = Integer.parseInt(selectedDateParts[2]);
+
+        Calendar selectedCalendar = Calendar.getInstance();
+        selectedCalendar.set(selectedYear, selectedMonth, selectedDay);
+
+        if (selectedCalendar.before(calendar)) {
+            Toast.makeText(requireContext(), "You cannot select a past date!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         String selectedCity = spinnerCities.getSelectedItem().toString();
         int selectedArmId = radioGroupArm.getCheckedRadioButtonId();
-        String selectedArm = selectedArmId == R.id.radio_left_arm ? "Left" : "Right";
+        String selectedArm = selectedArmId == R.id.radio_left_arm ? "Left" : (selectedArmId == R.id.radio_right_arm ? "Right" : null);
         String bloodType = checkboxKnowsBloodType.isChecked() ? spinnerBloodType.getSelectedItem().toString() : "Unknown";
 
-        String appointment = "City: " + selectedCity +
-                "\nDate: " + selectedDate +
-                "\nArm: " + selectedArm +
-                "\nBlood Type: " + bloodType;
+        if (selectedCity.isEmpty() || selectedArm == null || selectedDate.equals("No date selected") || (checkboxKnowsBloodType.isChecked() && bloodType.equals("Unknown"))) {
+            Toast.makeText(requireContext(), "Please fill in all the fields correctly!", Toast.LENGTH_SHORT).show();
+        } else {
+            String appointment = "City: " + selectedCity +
+                    "\nDate: " + selectedDate +
+                    "\nArm: " + selectedArm +
+                    "\nBlood Type: " + bloodType;
 
-        appointmentList.add(appointment);
-        appointmentAdapter.notifyDataSetChanged();
+            appointmentViewModel.addAppointment(appointment);
+
+            Toast.makeText(requireContext(), "Appointment saved successfully!", Toast.LENGTH_SHORT).show();
+
+            appointmentList.add(appointment);
+            appointmentAdapter.notifyDataSetChanged();
+        }
     }
 }

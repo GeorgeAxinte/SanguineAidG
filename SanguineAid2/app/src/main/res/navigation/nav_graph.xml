@@ -1,0 +1,57 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.sanguineaid.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_appointmentsFragment"
+            app:destination="@id/appointmentsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_donationHistoryFragment"
+            app:destination="@id/donationHistoryFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_eligibilityCheckFragment"
+            app:destination="@id/eligibilityCheckFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_faqsFragment"
+            app:destination="@id/faqsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/appointmentsFragment"
+        android:name="com.example.sanguineaid.fragments.AppointmentsFragment"
+        android:label="Appointments"
+        tools:layout="@layout/fragment_appointments" />
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.sanguineaid.fragments.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" />
+
+    <fragment
+        android:id="@+id/donationHistoryFragment"
+        android:name="com.example.sanguineaid.fragments.DonationHistoryFragment"
+        android:label="Donation History"
+        tools:layout="@layout/fragment_donation_history" />
+
+    <fragment
+        android:id="@+id/eligibilityCheckFragment"
+        android:name="com.example.sanguineaid.fragments.EligibilityCheckFragment"
+        android:label="Eligibility Check"
+        tools:layout="@layout/fragment_eligibility_check" />
+
+    <fragment
+        android:id="@+id/faqsFragment"
+        android:name="com.example.sanguineaid.fragments.FaqsFragment"
+        android:label="FAQs"
+        tools:layout="@layout/fragment_faqs" />
+</navigation>

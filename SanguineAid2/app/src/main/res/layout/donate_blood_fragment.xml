@@ -52,6 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Choose Date"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
             android:fontFamily="@font/caviardreams"
             android:layout_marginBottom="8dp"/>
 
@@ -115,6 +117,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Schedule Appointment"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
             android:fontFamily="@font/caviardreams"
             android:layout_marginBottom="16dp"/>
 

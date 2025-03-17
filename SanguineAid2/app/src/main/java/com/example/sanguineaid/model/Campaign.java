@@ -28,4 +28,8 @@ public class Campaign {
     public int getVoucherPercentage() {
         return voucherPercentage;
     }
+
+    public String getTitle() {
+        return name;
+    }
 }

@@ -23,6 +23,21 @@ public class CampaignFragment extends Fragment {
 
     public CampaignFragment() {
     }
+    public List<Campaign> getCampaignList() {
+        return campaignList;
+    }
+    public Campaign getFirstCampaign() {
+        if (campaignList != null && !campaignList.isEmpty()) {
+            return campaignList.get(0);
+        }
+        return null;
+    }
+    public String getTitle() {
+        if (campaignList != null && !campaignList.isEmpty()) {
+            return campaignList.get(0).getTitle(); // Return the title of the first campaign
+        }
+        return null; // Return null if the list is empty
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
