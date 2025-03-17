@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:spacing="12dp">
+
+    <TextView
+        android:id="@+id/fragmentTitleFaq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frequently Asked Questions"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/caviardreams"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"/>
+
+        <Button
+            android:id="@+id/btn_question_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What is Sanguine Aid?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sanguine Aid is an app that helps manage blood donation appointments."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:fontFamily="@font/caviardreams"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How can I donate blood?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To donate blood, you need to schedule an appointment and meet the eligibility criteria."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/caviardreams"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/caviardreams"
+            android:text="What are the eligibility criteria for blood donation?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To donate blood, you must be at least 18 years old, weigh at least 50kg, and be in good health."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginTop="4dp"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Is blood donation safe?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Yes, blood donation is a safe process. The needle is sterile and discarded after each use."
+            android:visibility="gone"
+            android:fontFamily="@font/caviardreams"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How often can I donate blood?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You can donate whole blood once every 56 days (8 weeks), and platelets every 7 days."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginTop="4dp"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What should I do after donating blood?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="After donating blood, you should rest for a few minutes, drink plenty of fluids, and avoid heavy exercise for 24 hours."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/caviardreams"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Can I donate blood if I have a medical condition?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="It depends on the condition. Some medical conditions may temporarily or permanently disqualify you from donating blood."
+            android:visibility="gone"
+            android:fontFamily="@font/caviardreams"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_8"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/caviardreams"
+            android:layout_height="wrap_content"
+            android:text="Is there a risk of infection from donating blood?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No, the blood donation process is sterile and there is no risk of infection."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/caviardreams"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Can I donate blood if I am pregnant?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No, pregnant women are not eligible to donate blood."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/caviardreams"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+        <Button
+            android:id="@+id/btn_question_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How long does it take to donate blood?"
+            android:background="@drawable/dark_rounded_button"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/answer_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The blood donation process usually takes about 10 to 15 minutes."
+            android:visibility="gone"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/caviardreams"
+            android:layout_marginTop="4dp"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
+    </LinearLayout>
+</ScrollView>
