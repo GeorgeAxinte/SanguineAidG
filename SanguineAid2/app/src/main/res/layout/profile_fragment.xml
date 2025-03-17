@@ -23,15 +23,6 @@
             android:layout_marginBottom="16dp"
             android:layout_gravity="center_horizontal" />
 
-        <Button
-            android:id="@+id/btn_edit_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:fontFamily="@font/caviardreams"
-            android:background="@drawable/dark_rounded_button"
-            android:textColor="@color/white"
-            android:layout_marginBottom="12dp"/>
 
         <Button
             android:id="@+id/btn_view_appointments"

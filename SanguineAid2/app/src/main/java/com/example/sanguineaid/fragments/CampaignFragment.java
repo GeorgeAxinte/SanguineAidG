@@ -34,9 +34,9 @@ public class CampaignFragment extends Fragment {
     }
     public String getTitle() {
         if (campaignList != null && !campaignList.isEmpty()) {
-            return campaignList.get(0).getTitle(); // Return the title of the first campaign
+            return campaignList.get(0).getTitle();
         }
-        return null; // Return null if the list is empty
+        return null;
     }
 
     @Override

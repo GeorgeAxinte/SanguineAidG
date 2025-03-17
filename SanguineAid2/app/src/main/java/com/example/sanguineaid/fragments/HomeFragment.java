@@ -1,5 +1,6 @@
 package com.example.sanguineaid.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.sanguineaid.R;
 import com.example.sanguineaid.model.AppointmentViewModel;
 import com.example.sanguineaid.model.Campaign;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,6 +31,7 @@ public class HomeFragment extends Fragment {
     private TextView txtSoonestAppointment, txtFirstCampaignDetail;
     private AppointmentViewModel appointmentViewModel;
     private List<String> appointmentList;
+    private BarChart barChart;
 
     private List<Campaign> campaignList = List.of(
             new Campaign("eMAG Campaign – Donate blood and earn discounts", R.drawable.emag, "01-02-2025 - 28-02-2025", 15),
@@ -35,6 +45,7 @@ public class HomeFragment extends Fragment {
 
         txtSoonestAppointment = view.findViewById(R.id.txt_soonest_appointment_detail);
         txtFirstCampaignDetail = view.findViewById(R.id.txt_first_campaign_detail);
+        barChart = view.findViewById(R.id.chart_top_donors);
 
         appointmentViewModel = new ViewModelProvider(requireActivity()).get(AppointmentViewModel.class);
 
@@ -52,6 +63,7 @@ public class HomeFragment extends Fragment {
             txtFirstCampaignDetail.setVisibility(View.GONE);
         }
 
+        setupBarChart();
         return view;
     }
 
@@ -90,5 +102,34 @@ public class HomeFragment extends Fragment {
             }
         }
         return soonestAppointment != null ? soonestAppointment : "No upcoming appointments.";
+    }
+
+    private void setupBarChart() {
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(0, 500));
+        entries.add(new BarEntry(1, 700));
+        entries.add(new BarEntry(2, 400));
+        entries.add(new BarEntry(3, 850));
+        entries.add(new BarEntry(4, 620));
+
+        final String[] donorNames = new String[]{"Darius", "Bogdan", "Petru", "Stefan", "Andrei"};
+
+        BarDataSet dataSet = new BarDataSet(entries, "Top Donors");
+        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        dataSet.setValueTextColor(Color.BLACK);
+        dataSet.setValueTextSize(14f);
+
+        BarData barData = new BarData(dataSet);
+        barChart.setData(barData);
+
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(donorNames));
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1f);
+        xAxis.setGranularityEnabled(true);
+
+        barChart.getDescription().setEnabled(false);
+        barChart.setFitBars(true);
+        barChart.invalidate();
     }
 }

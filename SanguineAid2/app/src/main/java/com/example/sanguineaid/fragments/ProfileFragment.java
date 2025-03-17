@@ -20,16 +20,11 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
-        Button btnEditProfile = view.findViewById(R.id.btn_edit_profile);
         Button btnViewAppointments = view.findViewById(R.id.btn_view_appointments);
         Button btnDonationHistory = view.findViewById(R.id.btn_donation_history);
         Button btnEligibilityCheck = view.findViewById(R.id.btn_eligibility_check);
         Button btnFAQs = view.findViewById(R.id.btn_faqs);
 
-        btnEditProfile.setOnClickListener(v -> {
-            Fragment editProfileFragment = new EditProfileFragment();
-            replaceFragment(editProfileFragment);
-        });
 
         btnViewAppointments.setOnClickListener(v -> {
             Fragment appointmentsFragment = new AppointmentsFragment();

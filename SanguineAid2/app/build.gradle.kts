@@ -42,7 +42,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
+    implementation(libs.mpandroidchart)
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
-    implementation (libs.picasso)
+    implementation(libs.picasso)
 }
