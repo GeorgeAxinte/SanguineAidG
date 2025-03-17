@@ -119,6 +119,6 @@ public class EligibilityCheckFragment extends Fragment {
 
         optionsGroup.setVisibility(View.GONE);
         questionTextView.setVisibility(View.GONE);
-        nextButton.setVisibility(View.GONE); 
+        nextButton.setVisibility(View.GONE);
     }
 }

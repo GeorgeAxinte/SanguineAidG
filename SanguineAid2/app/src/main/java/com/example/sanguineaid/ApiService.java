@@ -15,5 +15,6 @@ public interface ApiService {
     Call<ResponseBody> addPoints(@Path("username") String username);
     @GET("/get_points/{username}")
     Call<ResponseBody> getPoints(@Path("username") String username);
-
+    @GET("/get_firstname/{username}")
+    Call<ResponseBody> get_firstname(@Path("username") String username);
 }
