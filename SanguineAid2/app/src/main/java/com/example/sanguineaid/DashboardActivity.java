@@ -10,7 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.view.MenuItem;
 
 import com.example.sanguineaid.fragments.HomeFragment;
-import com.example.sanguineaid.fragments.CampaignsFragment;
+import com.example.sanguineaid.fragments.CampaignFragment;
 import com.example.sanguineaid.fragments.DonateBloodFragment;
 import com.example.sanguineaid.fragments.ProfileFragment;
 
@@ -33,7 +33,7 @@ public class DashboardActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_home) {
                     selectedFragment = new HomeFragment();
                 } else if (item.getItemId() == R.id.nav_campaigns) {
-                    selectedFragment = new CampaignsFragment();
+                    selectedFragment = new CampaignFragment();
                 } else if (item.getItemId() == R.id.nav_donate) {
                     selectedFragment = new DonateBloodFragment();
                 } else if (item.getItemId() == R.id.nav_more) {

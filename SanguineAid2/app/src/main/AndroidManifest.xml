@@ -41,7 +41,7 @@
         </activity>
 
         <activity
-            android:name=".fragments.CampaignsFragment"
+            android:name=".fragments.CampaignFragment"
             android:exported="true">
         </activity>
 

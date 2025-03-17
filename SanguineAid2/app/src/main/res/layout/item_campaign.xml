@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="horizontal"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/rounded_background"
+    android:elevation="2dp"
+    android:layout_gravity="center">
+
+<ImageView
+android:id="@+id/campaign_image"
+android:layout_width="80dp"
+android:layout_height="80dp"
+android:layout_marginEnd="16dp"
+android:src="@drawable/ic_launcher_background"
+android:contentDescription="Campaign Image"
+android:layout_gravity="center_vertical"/>
+
+<LinearLayout
+android:orientation="vertical"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_weight="1"
+android:gravity="center_vertical">
+
+<TextView
+    android:id="@+id/campaign_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Example"
+    android:fontFamily="@font/caviardreams"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    android:textColor="@android:color/black"
+    android:layout_marginBottom="4dp"/>
+
+<TextView
+    android:id="@+id/campaign_duration"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/caviardreams"
+    android:text="Duration: 01-01-2025 - 31-01-2025"
+    android:textSize="14sp"
+    android:textColor="@android:color/darker_gray"
+    android:layout_marginBottom="4dp"/>
+
+<TextView
+    android:id="@+id/campaign_voucher"
+    android:layout_width="wrap_content"
+    android:fontFamily="@font/caviardreams"
+    android:layout_height="wrap_content"
+    android:text="Voucher: 10%"
+    android:textSize="14sp"
+    android:textColor="@android:color/holo_green_dark"/>
+</LinearLayout>
+    </LinearLayout>
