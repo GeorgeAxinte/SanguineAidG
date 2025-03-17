@@ -32,3 +32,9 @@ def add_points(username: str, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return {"message": "Points added successfully", "points": user.points}
+@app.get("/get_points/{username}")
+def get_points(username: str, db: Session = Depends(get_db)):
+    user = crud.get_user_by_username(db, username)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"points": user.points}

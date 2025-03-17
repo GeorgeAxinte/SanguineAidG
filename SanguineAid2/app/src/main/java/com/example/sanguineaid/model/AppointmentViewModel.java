@@ -15,7 +15,7 @@ public class AppointmentViewModel extends ViewModel {
     }
 
     public List<String> getAppointmentList() {
-        return appointments.getValue(); // Return the current value of appointments
+        return appointments.getValue();
     }
     public void addAppointment(String appointment) {
         List<String> currentList = appointments.getValue();
