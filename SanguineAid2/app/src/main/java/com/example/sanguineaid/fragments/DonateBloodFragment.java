@@ -1,7 +1,9 @@
 package com.example.sanguineaid.fragments;
 
 import android.app.DatePickerDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sanguineaid.ApiClient;
 import com.example.sanguineaid.R;
 import com.example.sanguineaid.model.AppointmentViewModel;
 
@@ -30,6 +33,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+
+import okhttp3.ResponseBody;import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DonateBloodFragment extends Fragment {
     private Spinner spinnerCities, spinnerBloodType;
@@ -116,23 +123,56 @@ public class DonateBloodFragment extends Fragment {
 
         String selectedCity = spinnerCities.getSelectedItem().toString();
         int selectedArmId = radioGroupArm.getCheckedRadioButtonId();
-        String selectedArm = selectedArmId == R.id.radio_left_arm ? "Left" : (selectedArmId == R.id.radio_right_arm ? "Right" : null);
+        String selectedArm = selectedArmId == R.id.radio_left_arm ? "Left" :
+                (selectedArmId == R.id.radio_right_arm ? "Right" : null);
         String bloodType = checkboxKnowsBloodType.isChecked() ? spinnerBloodType.getSelectedItem().toString() : "Unknown";
 
-        if (selectedCity.isEmpty() || selectedArm == null || selectedDate.equals("No date selected") || (checkboxKnowsBloodType.isChecked() && bloodType.equals("Unknown"))) {
+        if (selectedCity.isEmpty() || selectedArm == null || selectedDate.equals("No date selected") ||
+                (checkboxKnowsBloodType.isChecked() && bloodType.equals("Unknown"))) {
             Toast.makeText(requireContext(), "Please fill in all the fields correctly!", Toast.LENGTH_SHORT).show();
-        } else {
-            String appointment = "City: " + selectedCity +
-                    "\nDate: " + selectedDate +
-                    "\nArm: " + selectedArm +
-                    "\nBlood Type: " + bloodType;
-
-            appointmentViewModel.addAppointment(appointment);
-
-            Toast.makeText(requireContext(), "Appointment saved successfully!", Toast.LENGTH_SHORT).show();
-
-            appointmentList.add(appointment);
-            appointmentAdapter.notifyDataSetChanged();
+            return;
         }
+
+        String appointment = "City: " + selectedCity +
+                "\nDate: " + selectedDate +
+                "\nArm: " + selectedArm +
+                "\nBlood Type: " + bloodType;
+
+        appointmentViewModel.addAppointment(appointment);
+
+        Toast.makeText(requireContext(), "Appointment saved successfully!", Toast.LENGTH_SHORT).show();
+
+        appointmentList.add(appointment);
+        appointmentAdapter.notifyDataSetChanged();
+        String loggedInUsername = getLoggedInUsername();
+        if (loggedInUsername == null) {
+            Toast.makeText(getContext(), "Error: User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        addPointsToUser(loggedInUsername);
+
     }
+
+    private void addPointsToUser(String username) {
+        ApiClient.getApiService().addPoints(username).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getContext(), "5 points added!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Failed to add points", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getContext(), "Error adding points", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private String getLoggedInUsername() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        return sharedPreferences.getString("logged_in_username", null);
+    }
+
 }

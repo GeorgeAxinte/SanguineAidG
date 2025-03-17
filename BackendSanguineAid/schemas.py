@@ -12,6 +12,7 @@ class UserBase(BaseModel):
     city: str
     address: str
     hasdonatedbloodbefore: bool
+    points: int
 
 class UserCreate(UserBase):
     password: str

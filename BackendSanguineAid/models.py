@@ -17,6 +17,7 @@ class User(Base):
     city = Column(String)
     address = Column(String)
     hasdonatedbloodbefore = Column(Boolean)
+    points = Column(Integer, default=0)
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

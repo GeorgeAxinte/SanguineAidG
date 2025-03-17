@@ -21,6 +21,7 @@ def create_user(db: Session, user: schemas.UserCreate):
         city=user.city,
         address=user.address,
         hasdonatedbloodbefore=user.hasdonatedbloodbefore,
+        points=0,
     )
     db.add(db_user)
     db.commit()
@@ -31,4 +32,12 @@ def authenticate_user(db: Session, username: str, password: str):
     user = get_user_by_username(db, username)
     if not user or not pwd_context.verify(password, user.password):
         return None
+    return user
+
+def add_points_to_user(db: Session, username: str, points: int = 5):
+    user = db.query(models.User).filter(models.User.username == username).first()
+    if not user:
+        return None
+    user.points += points
+    db.commit()
     return user

@@ -9,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import okhttp3.ResponseBody;
+import okhttp3.ResponseBody;    import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class ActivityLogin extends AppCompatActivity {
     private EditText etUsername, etPassword;
@@ -23,23 +24,33 @@ public class ActivityLogin extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(v -> loginUser());
     }
+
+
     private void loginUser() {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
+
         ApiClient.getApiService().loginUser(new UserLogin(username, password)).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ActivityLogin.this);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("logged_in_username", username);
+                    editor.apply();
+
                     startActivity(new Intent(ActivityLogin.this, DashboardActivity.class));
                     finish();
                 } else {
                     Toast.makeText(ActivityLogin.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Toast.makeText(ActivityLogin.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

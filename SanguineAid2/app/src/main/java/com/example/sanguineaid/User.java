@@ -12,8 +12,9 @@ public class User {
     private String city;
     private String address;
     private boolean hasdonatedbloodbefore;
+    private int points;
 
-    public User(String username, String password, String email, String first_name, String last_name, int age, String gender, String date_of_birth, String city, String address, boolean hasdonatedbloodbefore) {
+    public User(String username, String password, String email, String first_name, String last_name, int age, String gender, String date_of_birth, String city, String address, boolean hasdonatedbloodbefore, int points) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -25,5 +26,13 @@ public class User {
         this.city = city;
         this.address = address;
         this.hasdonatedbloodbefore = hasdonatedbloodbefore;
+        this.points = points;
+    }
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

@@ -72,6 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
             String city = etCity.getText().toString();
             String address = etAddress.getText().toString();
             boolean hasdonatedbloodbefore = hasdonatedbloodbeforeCheckBox.isChecked();
+            int points = 0;
 
             if (username.isEmpty() || password.isEmpty() || email.isEmpty() || first_name.isEmpty() || last_name.isEmpty() ||
                     ageString.isEmpty() || date_of_birth.isEmpty() || city.isEmpty() || address.isEmpty()) {
@@ -114,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
             int selectedGenderId = genderRadioGroup.getCheckedRadioButtonId();
             String gender = (selectedGenderId == R.id.maleRadioButton) ? "Male" : "Female";
 
-            User user = new User(username, password, email, first_name, last_name, age, gender, date_of_birth, city, address, hasdonatedbloodbefore);
+            User user = new User(username, password, email, first_name, last_name, age, gender, date_of_birth, city, address, hasdonatedbloodbefore, points);
 
             Log.d("RegisterActivity", "User Data: " + new Gson().toJson(user));
 

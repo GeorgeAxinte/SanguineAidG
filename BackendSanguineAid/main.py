@@ -26,3 +26,9 @@ def login_user(user: schemas.UserLogin, db: Session = Depends(get_db)):
     if not db_user:
         raise HTTPException(status_code=400, detail="Invalid username or password")
     return {"message": "Login successful"}
+@app.post("/add_points/{username}")
+def add_points(username: str, db: Session = Depends(get_db)):
+    user = crud.add_points_to_user(db, username)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"message": "Points added successfully", "points": user.points}
